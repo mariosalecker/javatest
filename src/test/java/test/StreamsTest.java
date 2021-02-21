@@ -18,15 +18,6 @@ class StreamsTest {
         assertThat(allConfigurationCodes).isEmpty();
     }
 
-    @Test
-    void testGetAllConfigurationCodes() {
-        Streams streams = new Streams(new SampleData());
-        Map<Streams.ConfigType, List<String>> allConfigurationCodes = streams.getAllConfigurationCodes();
-
-        assertThat(allConfigurationCodes).containsOnlyKeys(Streams.ConfigType.COUNTRIES, Streams.ConfigType.CURRENCIES);
-        assertThat(allConfigurationCodes.get(Streams.ConfigType.COUNTRIES)).containsExactly("AT", "CH", "DE", "RU");
-        assertThat(allConfigurationCodes.get(Streams.ConfigType.CURRENCIES)).containsExactly("CHF", "EUR", "GBP");
-    }
 
     public static class SampleData implements Streams.DataProvider {
         public List<Streams.ConfigEntry> loadConfig() {

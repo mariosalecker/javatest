@@ -3,8 +3,9 @@ package test;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 public class Streams {
 
@@ -15,19 +16,15 @@ public class Streams {
     }
 
     public Map<ConfigType, List<String>> getAllConfigurationCodes() {
-        // return all configuration codes by the configuration type in alphabetical order
-        return configEntries.stream().filter(ConfigEntry::isActive).sorted(Comparator.comparing(ConfigEntry::getCode))
-                .collect(Collectors.groupingBy(ConfigEntry::getConfigType, TreeMap::new, Collectors.mapping(ConfigEntry::getCode, Collectors.toList())));
+        // TODO: return all configuration codes by the configuration type in alphabetical order
     }
 
     public Optional<String> findLabelForCode(String code) {
-        // return the label for a given code
-        return configEntries.stream().filter(entry -> code.equals(entry.getCode())).map(ConfigEntry::getLabel).findFirst();
+        // TODO: return the label for a given code
     }
 
     public Map<ConfigType, Long> countElementsByType() {
-        // count how many entries are present per configType
-        return configEntries.stream().collect(Collectors.groupingBy(ConfigEntry::getConfigType, Collectors.counting()));
+        // TODO: count how many entries are present per configType
     }
 
     public interface DataProvider {
